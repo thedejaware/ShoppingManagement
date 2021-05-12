@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  stockdb:
+    container_name: stockdb
+    restart: always
+    ports:
+     - "27017:27017"
+    volumes:
+     - mongo_data:/data/db
+
+  portainer: 
+    container_name: portainer
+    restart : always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  stock.api:
+    container_name: stock.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://stockdb:27017"
+    depends_on:
+      - stockdb
+    ports:
+      - "8000:80"

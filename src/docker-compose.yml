@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  stockdb:
+    image: mongo
+
+  portainer:
+    image: portainer/portainer-ce
+
+  stock.api:
+    image: ${DOCKER_REGISTRY-}stockapi
+    build:
+      context: .
+      dockerfile: Services/Stock/Stock.API/Dockerfile
+
+volumes:
+  mongo_data:  
+  portainer_data:
