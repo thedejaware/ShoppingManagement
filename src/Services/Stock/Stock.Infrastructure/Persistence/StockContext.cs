@@ -3,7 +3,6 @@ using MongoDB.Driver;
 using Stock.Application.Contracts.Infrastructure;
 using Stock.Application.Models;
 using Stock.Domain.Entities;
-using Stock.Infrastructure.Contracts;
 
 using System;
 using System.Collections.Generic;

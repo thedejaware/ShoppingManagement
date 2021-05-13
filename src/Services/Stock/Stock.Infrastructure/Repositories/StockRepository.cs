@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
+using Stock.Application.Contracts.Infrastructure;
 using Stock.Application.Contracts.Persistence;
 using Stock.Domain.Entities;
-using Stock.Infrastructure.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

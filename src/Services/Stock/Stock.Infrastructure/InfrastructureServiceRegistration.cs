@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using Stock.Application.Contracts.Infrastructure;
 using Stock.Application.Contracts.Persistence;
 using Stock.Application.Models;
-using Stock.Infrastructure.Contracts;
 using Stock.Infrastructure.Persistence;
 using Stock.Infrastructure.Repositories;
 using System;

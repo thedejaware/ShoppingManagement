@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stock.Infrastructure.Contracts
+namespace Stock.Application.Contracts.Infrastructure
 {
     public interface IStockContext
     {
         IMongoCollection<StockItem> StockItems { get; }
     }
+
 }
