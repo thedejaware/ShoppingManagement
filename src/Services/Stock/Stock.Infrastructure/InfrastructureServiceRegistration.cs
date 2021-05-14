@@ -16,6 +16,18 @@ namespace Stock.Infrastructure
 {
     public static class InfrastructureServiceRegistration
     {
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+        {
+
+            services.AddSingleton<IStockDatabaseSettings>(sp => sp.GetRequiredService<IOptions<StockDatabaseSettings>>().Value);
+
+            services.AddScoped<IStockRepository, StockRepository>();
+
+            services.AddScoped<IStockContext, StockContext>();
+
+            return services;
+        }
+
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<StockDatabaseSettings>(c => configuration.GetSection(nameof(StockDatabaseSettings)));

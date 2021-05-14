@@ -34,12 +34,24 @@ services:
       - stockdb
     ports:
       - "8000:80"
+
   basket.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
+      - "GrpcSettings:StockUrl=stock.grpc"
     depends_on:
       - basketdb
     ports:
       - "8002:80" 
+
+  stock.grpc:
+    container_name: stock.grpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://stockdb:27017"
+    depends_on:
+      - stockdb
+    ports:
+      - "8001:80"
 

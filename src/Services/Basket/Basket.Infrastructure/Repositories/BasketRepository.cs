@@ -4,6 +4,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Basket.Infrastructure.Repositories
 {
@@ -33,6 +34,29 @@ namespace Basket.Infrastructure.Repositories
 
 
         public async Task<ShoppingCart> UpdateBasket(ShoppingCart basket)
+        {
+            await _redisCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
+
+            return await GetBasket(basket.UserName);
+        }
+
+        public async Task<bool> GetItemInBasket(string productId, string username)
+        {
+            var basket = await _redisCache.GetAsync(username);
+
+            var serializedBasket = Encoding.UTF8.GetString(basket);
+
+            var shoppingCart = JsonConvert.DeserializeObject<ShoppingCart>(serializedBasket);
+
+            var itemFound = shoppingCart.Items.FirstOrDefault(p => p.ProductId == productId);
+
+            if (itemFound == null)
+                return false;
+
+            return true;
+        }
+
+        public async Task<ShoppingCart> CreateBasket(ShoppingCart basket)
         {
             await _redisCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
 

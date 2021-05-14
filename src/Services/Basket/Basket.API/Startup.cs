@@ -1,3 +1,5 @@
+using Basket.API.GrpcServices;
+using Basket.API.Middlewares;
 using Basket.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Stock.Grpc.Protos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +30,9 @@ namespace Basket.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddInfrastructureServices(Configuration);
+            services.AddGrpcClient<StockProtoService.StockProtoServiceClient>
+                (o => o.Address = new Uri(Configuration["GrpcSettings:StockUrl"]));
+            services.AddScoped<StockGrpcService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -48,6 +54,8 @@ namespace Basket.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<GlobalErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

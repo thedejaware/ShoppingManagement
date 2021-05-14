@@ -31,6 +31,7 @@ namespace Stock.Grpc.Services
             var stock = await _repository.GetStockByProduct(request.ProductName);
 
             if (stock == null)
+                //return new StockModel();
                 throw new RpcException(new Status(StatusCode.NotFound, $"Stock with the product name {request.ProductName} is not found."));
 
             // We have to convert Stock model to Grpc StockModel.
