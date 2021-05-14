@@ -11,6 +11,13 @@ This is an ASP.NET Core Web API Project including principles of Clean Architectu
 - gRPC
 - Docker
 
+To run the project, you will need the following tools;
+
+Visual Studio 2019
+.Net 5.0 or later
+Docker Desktop
+
+
 Basket.API => http://localhost:8002/swagger/index.html
 
 Stock.API => http://localhost:8000/swagger/index.html
