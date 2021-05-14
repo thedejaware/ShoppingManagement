@@ -28,14 +28,16 @@ namespace Stock.Grpc.Services
         // Overriding rpc APIs (methods) defined in proto file
         public override async Task<StockModel> GetStock(GetStockRequest request, ServerCallContext context)
         {
-            var stock = await _repository.GetStockByProduct(request.ProductName);
+            var stock = await _repository.GetStockByProduct(request.Id);
 
             if (stock == null)
-                //return new StockModel();
-                throw new RpcException(new Status(StatusCode.NotFound, $"Stock with the product name {request.ProductName} is not found."));
+            {
+                _logger.LogError($"Stock with the product Id {request.Id} is not found.");
+
+                throw new RpcException(new Status(StatusCode.NotFound, $"Stock with the product Id {request.Id} is not found."));
+            }
 
             // We have to convert Stock model to Grpc StockModel.
-
             _logger.LogInformation("Stock is retrieved for ProductName: {productName}, Amount: {amount}", stock.ProductName, stock.Quantity);
             var stockModel = _mapper.Map<StockModel>(stock);
             return stockModel;

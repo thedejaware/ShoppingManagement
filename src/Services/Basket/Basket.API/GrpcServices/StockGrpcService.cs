@@ -16,11 +16,11 @@ namespace Basket.API.GrpcServices
             _client = client ?? throw new ArgumentNullException(nameof(client));
         }
 
-        public async Task<StockModel> GetStock(string productName)
+        public async Task<StockModel> GetStock(string productId)
         {
             try
             {
-                var request = new GetStockRequest { ProductName = productName };
+                var request = new GetStockRequest { Id = productId };
                 return await _client.GetStockAsync(request);
             }
             catch (RpcException ex)

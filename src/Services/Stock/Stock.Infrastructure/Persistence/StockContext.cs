@@ -15,23 +15,20 @@ namespace Stock.Infrastructure.Persistence
     public class StockContext : IStockContext
     {
         //public DatabaseSettings _databaseSettings { get; }
-        private readonly IStockDatabaseSettings _databaseSettings;
-        public StockContext(IStockDatabaseSettings databaseSettings)
+        private readonly DatabaseSettings _databaseSettings;
+        public StockContext(IOptions<DatabaseSettings> databaseSettings)
         {
-            //_databaseSettings = databaseSettings.Value;
-            _databaseSettings = databaseSettings;
+            _databaseSettings = databaseSettings.Value;
 
-            // var client2 = new MongoClient(_databaseSettings.ConnectionString);
-            //var database = client.GetDatabase(_databaseSettings.DatabaseName);
+            var client = new MongoClient(_databaseSettings.ConnectionString);
+            
+            var database = client.GetDatabase(_databaseSettings.DatabaseName);
 
-            //StockItems = database.GetCollection<StockItem>(_databaseSettings.CollectionName);
+            StockItems = database.GetCollection<StockItem>(_databaseSettings.CollectionName);
 
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("StockDb");
-
-            StockItems = database.GetCollection<StockItem>("StockItems");
             StockContextSeed.SeedData(StockItems);
         }
+        
         public IMongoCollection<StockItem> StockItems { get; }
     }
 }

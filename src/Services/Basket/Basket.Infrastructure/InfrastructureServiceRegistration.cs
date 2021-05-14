@@ -17,6 +17,7 @@ namespace Basket.Infrastructure
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration.GetSection("CacheSettings:ConnectionString").Value;
+
             });
 
             services.AddScoped<IBasketRepository, BasketRepository>();

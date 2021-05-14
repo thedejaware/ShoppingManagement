@@ -8,7 +8,7 @@ service StockProtoService {
 }
 
 message GetStockRequest {
-	string productName = 1;
+	string id = 1;
 }
 
 message StockModel {

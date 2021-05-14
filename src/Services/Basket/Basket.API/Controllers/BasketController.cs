@@ -32,12 +32,10 @@ namespace Basket.API.Controllers
         public async Task<ActionResult<ShoppingCart>> GetBasket(string username)
         {
             var basket = await _basketRepository.GetBasket(username);
-            return new JsonResult(new ResponseModel
-            {
-                Success = true,
-                Data = basket
-            });
-            //?? new ShoppingCart(username)
+            if (basket == null)
+                return BasketNotFound(username);
+
+            return Success(basket); 
         }
 
         [HttpPost]
@@ -58,7 +56,7 @@ namespace Basket.API.Controllers
 
             // Stock control 
             // Communicate with Stock Grpc Service to check stock quantity
-            var stock = await _stockGrpcService.GetStock(cartItem.ProductName);
+            var stock = await _stockGrpcService.GetStock(cartItem.ProductId);
             if (stock != null && stock.Quantity < cartItem.Quantity)
                 return NotEnoughStock(cartItem.ProductName);
 

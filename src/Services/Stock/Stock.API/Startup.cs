@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Stock.API.Middlewares;
+using Stock.Application.Models;
 using Stock.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace Stock.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
+
             services.AddInfrastructureServices(Configuration);
 
             services.AddControllers();

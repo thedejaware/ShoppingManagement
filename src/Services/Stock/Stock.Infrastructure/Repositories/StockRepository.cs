@@ -19,17 +19,19 @@ namespace Stock.Infrastructure.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<StockItem> GetStockByProduct(string productName)
+        public async Task<StockItem> GetStockByProduct(string productId)
         {
             return await _context
                              .StockItems
-                             .Find(p => p.ProductName == productName)
+                             .Find(p => p.Id == productId)
                              .FirstOrDefaultAsync();
         }
 
-        public async Task Add(StockItem stockItem)
+        public async Task<StockItem> Add(StockItem stockItem)
         {
             await _context.StockItems.InsertOneAsync(stockItem);
+
+            return await GetStockByProduct(stockItem.Id);
         }
 
         public async Task<bool> Delete(string id)
@@ -52,6 +54,14 @@ namespace Stock.Infrastructure.Repositories
 
             return updatedResult.IsAcknowledged
                        && updatedResult.ModifiedCount > 0;
+        }
+
+        public async Task<IEnumerable<StockItem>> GetAll()
+        {
+            return await _context
+                             .StockItems
+                             .Find(p => true)
+                             .ToListAsync();
         }
     }
 }

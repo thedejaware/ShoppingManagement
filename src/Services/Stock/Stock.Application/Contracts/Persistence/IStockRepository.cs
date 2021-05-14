@@ -9,8 +9,9 @@ namespace Stock.Application.Contracts.Persistence
 {
     public interface IStockRepository
     {
-        Task<StockItem> GetStockByProduct(string productName);
-        Task Add(StockItem stockItem);
+        Task<IEnumerable<StockItem>> GetAll();
+        Task<StockItem> GetStockByProduct(string productId);
+        Task<StockItem> Add(StockItem stockItem);
         Task<bool> Update(StockItem stockItem);
         Task<bool> Delete(string id);
 
