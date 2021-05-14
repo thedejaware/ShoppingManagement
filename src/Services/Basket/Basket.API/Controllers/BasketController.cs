@@ -35,7 +35,7 @@ namespace Basket.API.Controllers
             if (basket == null)
                 return BasketNotFound(username);
 
-            return Success(basket); 
+            return Success(basket);
         }
 
         [HttpPost]
@@ -138,6 +138,29 @@ namespace Basket.API.Controllers
             });
         }
 
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> Checkout([FromBody] ShoppingCart basketCheckout)
+        {
+            // Get existing basket with total prica by userName
+            var basket = await _basketRepository.GetBasket(basketCheckout.UserName);
+            if (basket == null)
+                return BasketNotFound(basketCheckout.UserName);
+
+            // TO DO 
+            // Publishing basketcheckout event using MassTransit
+            // Send checkout event to rabbitmq
+            // var eventMessage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
+            // await _publishEndpoint.Publish(eventMessage);
+
+            // remove the basket
+            await _basketRepository.DeleteBasket(basket.UserName);
+
+            return Accepted();
+
+        }
 
         #region Private Methods
         private ActionResult BasketNotFound(string username)
