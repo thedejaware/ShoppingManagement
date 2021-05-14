@@ -1,4 +1,4 @@
-# Clean Archtirecture & Domain Driven Design Concepts
+# Shopping Cart API with Stock Control using Clean Archtirecture & Domain Driven Design Concepts
 Shopping Management
 
 This is an ASP.NET Core Web API Project including principles of Clean Architecture and how Domain Driven Design concepts work with Clean Architecture
