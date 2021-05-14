@@ -16,3 +16,6 @@ Basket.API => http://localhost:8002/swagger/index.html
 Stock.API => http://localhost:8000/swagger/index.html
 
 gRPC => http://localhost:8001
+
+Portainer => http://localhost:9000/#!/home
+
