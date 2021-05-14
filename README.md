@@ -12,5 +12,7 @@ This is an ASP.NET Core Web API Project including principles of Clean Architectu
 - Docker
 
 Basket.API => http://localhost:8002/swagger/index.html
+
 Stock.API => http://localhost:8000/swagger/index.html
+
 gRPC => http://localhost:8001
