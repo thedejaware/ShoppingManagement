@@ -50,7 +50,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
-      - "GrpcSettings:StockUrl=stock.grpc"
+      - "GrpcSettings:StockUrl=http://stock.grpc"
     depends_on:
       - basketdb
     ports:

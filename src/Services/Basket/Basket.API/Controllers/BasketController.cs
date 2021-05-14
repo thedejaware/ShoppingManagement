@@ -27,9 +27,10 @@ namespace Basket.API.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [HttpGet("{username}", Name = "GetBasket")]
+        [Route("[action]/{username}", Name = "Get")]
+        [HttpGet]
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ShoppingCart>> GetBasket(string username)
+        public async Task<ActionResult<ShoppingCart>> Get(string username)
         {
             var basket = await _basketRepository.GetBasket(username);
             if (basket == null)
@@ -88,7 +89,7 @@ namespace Basket.API.Controllers
 
             // Stock control 
             // Communicate with Stock Grpc Service to check stock quantity
-            var stock = await _stockGrpcService.GetStock(cartItem.ProductName);
+            var stock = await _stockGrpcService.GetStock(cartItem.ProductId);
             if (stock != null && stock.Quantity < cartItem.Quantity)
                 return NotEnoughStock(cartItem.ProductName);
 
