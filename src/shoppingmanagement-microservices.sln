@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{0001354D-8F60-46B3-9003-AF82E5ACEF50}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{699B084A-1265-4E13-BD0F-AF2A6EAF903D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stock", "Stock", "{05AD3322-DD40-4D7B-99EF-2005C7487FE5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.API", "Services\Stock\Stock.API\Stock.API.csproj", "{31B9BE25-D821-4C0F-BF33-119D80A43AB0}"
@@ -19,17 +17,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.Domain", "Services\St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.Infrastructure", "Services\Stock\Stock.Infrastructure\Stock.Infrastructure.csproj", "{D9C14DAB-731D-4C81-B64D-D02012A3C9D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stock.Grpc", "Services\Stock\Stock.Grpc\Stock.Grpc.csproj", "{269FC2D8-4AB9-4EBE-9837-BB8E001220B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.Grpc", "Services\Stock\Stock.Grpc\Stock.Grpc.csproj", "{269FC2D8-4AB9-4EBE-9837-BB8E001220B7}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{861CDBF6-0CF6-4FCC-A43C-303EECCB44D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{9FD654C3-7461-4488-8A40-35299A9DF968}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{9FD654C3-7461-4488-8A40-35299A9DF968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Application", "Services\Basket\Basket.Application\Basket.Application.csproj", "{2C22FF31-4273-4DA8-B901-E48FE56BBC80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Application", "Services\Basket\Basket.Application\Basket.Application.csproj", "{2C22FF31-4273-4DA8-B901-E48FE56BBC80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Domain", "Services\Basket\Basket.Domain\Basket.Domain.csproj", "{CAAF06B4-B59C-4F13-8D2F-324515FEE628}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Domain", "Services\Basket\Basket.Domain\Basket.Domain.csproj", "{CAAF06B4-B59C-4F13-8D2F-324515FEE628}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Infrastructure", "Services\Basket\Basket.Infrastructure\Basket.Infrastructure.csproj", "{7E96DE6E-D14E-4DFA-834F-09EDB6EB7595}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Infrastructure", "Services\Basket\Basket.Infrastructure\Basket.Infrastructure.csproj", "{7E96DE6E-D14E-4DFA-834F-09EDB6EB7595}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,7 +81,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0001354D-8F60-46B3-9003-AF82E5ACEF50} = {B4C8CF4C-A6F7-4C0C-96B5-449E5F90D0A5}
-		{699B084A-1265-4E13-BD0F-AF2A6EAF903D} = {B4C8CF4C-A6F7-4C0C-96B5-449E5F90D0A5}
 		{05AD3322-DD40-4D7B-99EF-2005C7487FE5} = {B4C8CF4C-A6F7-4C0C-96B5-449E5F90D0A5}
 		{31B9BE25-D821-4C0F-BF33-119D80A43AB0} = {05AD3322-DD40-4D7B-99EF-2005C7487FE5}
 		{834F6715-CC64-4B9E-AA98-05D1B004D2A6} = {05AD3322-DD40-4D7B-99EF-2005C7487FE5}
