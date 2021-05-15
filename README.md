@@ -1,3 +1,4 @@
+
 # Shopping Cart API with Stock Control using Clean Archtirecture & Domain Driven Design Concepts
 Shopping Management
 
@@ -23,7 +24,7 @@ Memory: 4 GB
 CPU: 2
 - At the root directory of the project which include docker-compose.yml files, run below command:
 
-docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+**docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d**
 
 After the microservice, database and portainer are composed you can launch the following services;
 
@@ -36,6 +37,11 @@ After the microservice, database and portainer are composed you can launch the f
 - Portainer (Container Management) = http://localhost:9000/
 		 username = "admin"
 		 password = "admin1234"
+
+** If you want to run the project without docker-compose you should set "Basket.API, Stock.API and Stock.Grpc" as a multiple startup projects" under the property pages of the solution. You can find below the screenshot of property page
+
+![enter image description here](https://drive.google.com/uc?export=download&id=1KTsDCHem2On96q7QGFIEJ2xDzK4j2qNQ)
+
 
 #### Basket.API
 Shopping Cart data is stored in Redis using JSON Serialization. 
