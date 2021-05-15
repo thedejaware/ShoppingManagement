@@ -123,6 +123,19 @@ namespace Basket.API.Controllers
             if (basketInCache != null)
                 return BasketAlreadyCreated(basket.UserName);
 
+            // Stock control 
+            // Communicate with Stock Grpc Service to check stock quantity
+            foreach (var item in basket.Items)
+            {
+                var stock = await _stockGrpcService.GetStock(item.ProductId);
+                if (stock != null && stock.Quantity < item.Quantity)
+                {
+                    return NotEnoughStock(item.ProductName);
+
+                }
+
+            }
+
             var result = await _basketRepository.CreateBasket(basket);
             return Success(result);
         }
