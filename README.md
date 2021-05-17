@@ -38,7 +38,7 @@ After the microservice, database and portainer are composed you can launch the f
 		 username = "admin"
 		 password = "admin1234"
 
-** If you want to run the project without docker-compose you should set "Basket.API, Stock.API and Stock.Grpc" as a multiple startup projects" under the property pages of the solution. You can find below the screenshot of property page
+** If you want to run the project without docker-compose you should run mongodb in your local environment and set "Basket.API, Stock.API and Stock.Grpc" as a multiple startup projects" under the property pages of the solution. You can find below the screenshot of property page
 
 ![enter image description here](https://drive.google.com/uc?export=download&id=1KTsDCHem2On96q7QGFIEJ2xDzK4j2qNQ)
 
