@@ -10,6 +10,7 @@ This is an ASP.NET Core Web API Project including principles of Clean Architectu
 - MongoDB
 - Redis
 - gRPC
+- ProtoBuf
 - Docker
 
 To run the project, you will need the following tools;
